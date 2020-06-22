@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tksflysun.im.api.dao.UserAttributeDao">
+
+	<insert id="addUserAttribute" parameterType="UserAttribute">
+		INSERT INTO
+		t_user_attribute
+		(
+		`user_id` ,
+		`sex` ,
+		`id_card` ,
+		`birthday` ,
+		`real_name`,
+		`nick_name`,
+		`head_icon`,
+		`email`
+		)
+		VALUES
+		(
+		#{userId},
+		#{sex},
+		#{idCard},
+		#{birthDay},
+		#{realName},
+		#{nickName},
+		#{headIcon},
+		#{email}
+		)
+	</insert>
+
+	<update id="updateUserAttr" parameterType="UserAttribute">
+		update t_user_attribute
+		<set>
+			<if test="realName != null and realName !=''">
+				`real_name` = #{realName},
+			</if>
+			<if test="idCard != null and idCard !=''">
+				`id_card` = #{idCard},
+			</if>
+			<if test="birthDay != null and birthDay !=''">
+				`birthday` = #{birthDay},
+			</if>
+			<if test="sex != null">
+				`sex` = #{sex},
+			</if>
+			<if test="nickName != null and nickName != ''">
+				`nick_name` = #{nickName},
+			</if>
+			<if test="headIcon != null and headIcon != ''">
+				`head_icon` = #{headIcon},
+			</if>
+			<if test="email != null and email != ''">
+				`email` = #{email},
+			</if>
+		</set>
+		where user_id=#{userId}
+	</update>
+
+	<select id="getUserAttribute" parameterType="java.lang.Long"
+		resultType="UserAttribute">
+        select
+            `user_id` as userId,
+            `sex` as sex,
+            `birthday` as birthDay,
+            `nick_name` as nickName,
+            `head_icon` as headIcon,
+            `email`
+        from
+        t_user_attribute t
+        where
+        t.user_id=#{userId};
+	</select>
+
+</mapper>

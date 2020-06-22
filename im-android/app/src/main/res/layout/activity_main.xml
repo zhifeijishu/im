@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/good_morning_img"
+    android:orientation="vertical"
+    tools:context=".ui.main.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+        <!--标题栏-->
+        <include layout="@layout/main_title_bar" />
+        <!--放置Fragment的main_body-->
+        <RelativeLayout
+            android:id="@+id/main_body"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"></RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/main_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:background="#F2F2F2"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/bottom_fragement_chat_list_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/bottom_fragement_text_chat_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="嗨"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/bottom_fragement_image_chat_list"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_above="@+id/bottom_fragement_text_chat_list"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/me_normal" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bottom_fragement_friend_list_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/bottom_fragement_text_friend_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="好友"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/bottom_fragement_image_friend_list"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_above="@+id/bottom_fragement_text_friend_list"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/contacts_normal" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bottom_fragement_myinfo_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/bottom_fragement_text_myinfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="我"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/bottom_fragement_image_myinfo"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_above="@+id/bottom_fragement_text_myinfo"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/me_normal" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

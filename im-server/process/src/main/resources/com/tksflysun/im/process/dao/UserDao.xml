@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tksflysun.im.process.dao.UserDao">
+
+	<select id="getUserByUserId" resultType="User">
+		select
+		`user_id` as
+		userId,
+		`mobile_phone` as mobilePhone,
+		`srl_no` as srlNo,
+		`read_srl_no`
+		as readSrlNo,
+		`update_time_stamp` as updateTimeStamp ,
+		`add_time_stamp`
+		as addTimeStamp,
+		`invite_code` as inviteCode
+		from t_user
+		where
+		`user_id` =
+		#{userId}
+		limit 1
+	</select>
+
+	<update id="updateSrlNo">
+		update `t_user`
+		set srl_no=#{srlNo}
+		where
+		user_id=#{userId}
+	</update>
+	<update id="updateReadSrlNo">
+		update `t_user`
+		set read_srl_no=#{readSrlNo}
+		where
+		user_id=#{userId} and
+		read_srl_no <![CDATA[ < ]]>
+		#{readSrlNo}
+	</update>
+</mapper>

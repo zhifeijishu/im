@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.chat.ChatActivity">
+
+    <include
+        android:id="@+id/detail_bar"
+        layout="@layout/chat_title_bar" />
+
+    <RelativeLayout
+        android:id="@+id/message_detail_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FCFCFC">
+
+        <Button
+            android:id="@+id/message_send_btn"
+            android:layout_width="55dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="66dp"
+            android:gravity="center"
+            android:background="#1E90FF"
+            android:text="发送"
+            android:textColor="@android:color/white" />
+        <Button
+                android:id="@+id/vidio_chat_btn"
+                android:layout_width="55dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:gravity="center"
+                android:background="#1E90FF"
+                android:text="视频"
+                android:textColor="@android:color/white" />
+        <EditText
+            android:id="@+id/message_input"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@id/message_send_btn"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_message_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/message_detail_bottom"
+        android:layout_below="@id/detail_bar"
+        android:background="#F5F5F5"
+        android:dividerHeight="5dp"
+        android:transcriptMode="alwaysScroll" />
+</RelativeLayout>

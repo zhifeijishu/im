@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tksflysun.im.api.dao.FriendShipDao">
+
+
+	<select id="getFriendShipById" parameterType="java.lang.Long"
+		resultType="FriendShip">
+		select
+		`friend_ship_id` as friendShipId ,
+		`user_id` as
+		userId,
+		`friend_id` as friendId,
+		`remark_name` as remarkName,
+		`origin_name` as originName,
+		`add_time_stamp` as addTimeStamp,
+		`status`as status,
+		`level` as level
+		from t_friend_ship t
+		where
+		t.friend_ship_id=#{friendShipId}
+	</select>
+	<select id="getFriendShipByUserId"
+		parameterType="java.lang.Long" resultType="FriendShip">
+		select
+		`friend_ship_id` as
+		friendShipId,
+		`user_id` as userId,
+		`friend_id` as friendId,
+		`remark_name` as remarkName,
+		`origin_name` as originName,
+		`add_time_stamp` as addTimeStamp,
+		`status`as status,
+		`level` as level
+		from t_friend_ship t
+		where
+		t.user_id=#{userId}  
+	</select>
+	
+	 <select id="getFriendShipByUserAndFriendId"
+		parameterType="java.lang.Long" resultType="FriendShip">
+		select
+		`friend_ship_id` as
+		friendShipId,
+		`user_id` as userId,
+		`friend_id` as friendId,
+		`remark_name` as remarkName,
+		`origin_name` as originName,
+		`add_time_stamp` as addTimeStamp,
+		`status`as status,
+		`level` as level
+		from t_friend_ship t
+		where
+		t.user_id=#{userId}   and t.friend_id=#{friendId}
+	</select>
+	<insert id="addFriendShip" parameterType="FriendShip"
+		useGeneratedKeys="true" keyProperty="friendShipId"
+		keyColumn="friend_ship_id">
+		INSERT ignore INTO
+		t_friend_ship
+		(
+
+		`user_id` ,
+		`friend_id` ,
+		`remark_name`,
+		`origin_name`,
+		`add_time_stamp` ,
+		`status` ,
+		`level`
+
+		)
+		VALUES
+		(
+		#{userId},
+		#{friendId},
+
+		#{remarkName},
+		#{originName},
+		#{addTimeStamp},
+		#{status},
+		#{level}
+		)
+	</insert>
+	<update id="updateFriendShip">
+		update `t_friend_ship`
+		<set>
+			<if test="status != null and status !=''">
+				`status` = #{status}, 
+			</if>
+			<if test="level != null and level !=''">
+				`level` = #{level} ,
+			</if>
+		</set>
+		where user_id=#{userId} and friend_id=#{friendId}
+	</update>
+
+
+</mapper>

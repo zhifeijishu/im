@@ -1,0 +1,185 @@
+syntax = "proto3";
+package com.tksflysun.im.common.protobuf;  
+ /*单聊消息*/
+    message SingleMsg{
+	 //发送者账号id
+     int64  fromUserId=1;
+	 //接收者账号id
+     int64  toUserId=2;
+	//消息内容
+     string content=3;
+	//客户端发送消息时间戳
+	 int64 sendTimeStamp=4;
+	//服务器接收消息时间戳
+	 int64 receiveTimeStamp=5;
+	//消息类型文本、图片切片、图片结束、语音切片、语音结束
+	 int32 msgType=6;
+	//消息序号
+	 int64  srlNo=7;
+	//消息的唯一id，由客户端负责生成
+	 string msgId =8;
+	//发送消息的设备类型
+	 int32  deviceType=9;
+    }
+	 /*群聊消息*/
+	message GroupMsg{
+     //发送者账号id
+     int64 fromUserId=1;
+     //接收群id
+     int64 toGroupId=2;
+     //消息内容
+     string content=3;
+	 //客户端发送消息时间戳
+	 int64 sendTimeStamp=4;
+	 //服务器接收消息时间戳
+	 int64 receiveTimeStamp=5;
+	 //消息类型文本、图片切片、图片结束、语音切片、语音结束
+	 int32 msgType=6;
+	 //消息序号
+	 int64  srlNo=7;
+	 //消息的唯一id，由客户端负责生成
+	 string msgId =8;
+	 //发送消息的设备类型
+	 int32  deviceType=9;
+    }
+	/*消息发送响应**/
+	message MsgSendRes{
+		//消息id
+		string msgId=1;
+		//消息发送是否成功的标志
+		bool flag=2;
+		//服务器响应时间戳
+		int64 timeStamp=3;
+	}
+	/*消息请求*/
+	message MsgReq{
+		//请求者消息id
+		int64 userId=1;
+		//请求者客户端保存的已经读到的消息序号
+		int64 srlNo=2;
+		//请求者读取多少条
+		int32 pageSize=3;
+		//当前页
+		int32 currentPage=4;
+		//请求时间戳
+		int64 timeStamp=5;
+	}
+	/*消息请求响应*/
+	message MsgReqRes{
+		//本次读取到的序号
+		int64 srlNo=1;
+		//消息列表
+		repeated SingleMsg singleMessageList=2;
+				//消息列表
+		repeated GroupMsg  groupMessageList=3;
+		//响应时间戳
+		int64 timeStamp=4;
+	}
+	/*登录请求*/
+	message LoginReq{
+		int64 userId=1;
+		int32 deviceType=2;
+		//请求时间戳
+		int64 timeStamp=3;
+		//用户token
+		string token=4;
+	}
+	/*登录响应*/
+	message LoginRes{
+		//登录是否成功标识
+		bool flag=1;
+		//服务器响应时间戳
+		int64 timeStamp=2;
+	}
+	/*消息请求响应ack*/
+	message MsgReqAck{
+		//用户id
+		int64 userId=1;
+		//本地已经拉取到的消息序号
+		int64 srlNo=2;
+		//ack时间戳
+		int64 timeStamp=3;
+	}
+	/*新消息通知*/
+	message MsgInform{
+		int64 userId=1;
+		//最新的消息序号
+		int64 srlNo=2;
+		//通知时间戳
+		int64 timeStamp=3;
+	}
+	/*包类型*/
+	enum PkgTypeEnum {
+	    //proto3必须要有这个0,但实际用不到
+	     UNKNOWN=0;
+		// 登录包
+		 LOGIN_REQ = 1;
+		 //心跳包
+		 PING = 2;
+		//心跳响应包
+		 PONG=3;
+		//消息请求包
+		 MSG_REQ = 4;
+		//新消息通知包
+		 MSG_INFORM = 5;
+	    //消息请求响应包
+		MSG_REQ_RES=6;
+		//请求ack包
+		MSG_REQ_ACK = 7;
+		//单消息发送包
+		MSG_SEND_SINGLE = 8;
+		//群消息发送包
+		MSG_SEND_GROUP = 9;
+		//消息发送响应包
+		MSG_SEND_RES = 10;
+		//登录响应包
+		LOGIN_RES=11;
+	}
+	/*消息类型*/	
+	enum MsgTypeEnum{
+	 
+	     DEFAULT=0;
+		// 文本
+		 TEXT = 1;
+		//表情
+		 EMOJI=2;
+		//这个说明这个是个指令具体要干啥可以商量好客户端服务端
+		 PUSHCMD=3;
+		//图片应该也是有分片的这个和语音一样是直接上传到存储消息发地址还是分片通过通道待研究
+		 IMG = 4;
+		//消息分片
+		 VOICE = 5;
+		//语音描述
+		 VOICE_DES =6;
+		 //短视频
+		 VIDEO=7;
+		 //短视频描述
+		 VIDEO_DES=8;
+		
+	}
+	/*设备类型*/
+	enum DeviceTypeEnum{
+		 TMP=0;
+		 ANDROID = 1;
+		 IOS=2;
+		 PC=3;
+	}
+    /*Tcp消息包*/
+	message TcpPackage{
+		//包类型PacTypeEnum里的值
+		int32 packageType=1;
+		//协议内容，也就是消息内容
+		bytes content=2;
+	}
+	/*udp消息包*/
+	message UdpPackage{
+		//包类型
+		int32 packageType=1;
+		//协议内容，也就是消息内容
+		bytes content=2;
+		//逻辑层发到接入层的消息，要有userId找寻长连接通道
+		int64 toUserId=3;
+	}
+	
+  
+    

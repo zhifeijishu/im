@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" >
+	<properties>
+	</properties>
+
+	<!--   <Appenders>
+		<RollingFile name="RollingFile"
+			filename="/logs/remind/info.log"
+			filePattern="/logs/remind/info.log.%d{yyyy-MM-dd}">
+			<PatternLayout
+				pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c{1}: %l - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy modulate="true"
+					interval="1" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="RollingFile" />
+		</Root>
+	</Loggers>-->
+
+
+  
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c{1}: %l - %m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="RollingFile" />
+		</Root>
+
+		<Logger name="org.springframework.scheduling" level="info"
+			additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+	</Loggers> 
+</Configuration>

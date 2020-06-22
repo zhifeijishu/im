@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tksflysun.im.api.dao.FriendReqDao">
+
+
+	<select id="getFriendReqByFriendId"
+		parameterType="java.lang.Long" resultType="FriendReq">
+		select
+		`req_id` as reqId,
+		`user_id` as userId,
+		`friend_id` as friendId,
+		`status` as status,
+		`req_time` as reqTime ,
+		`handle_time` as handleTime from t_friend_req
+		t
+		where
+		t.friend_id=#{friendId} and t.`user_id` not in (select friend_id
+		from t_friend_ship where user_id=#{friendId} and `status` =2)
+	</select>
+
+
+	<select id="getFriendReqById" parameterType="java.lang.Long"
+		resultType="FriendReq">
+		select
+		`req_id` as reqId,
+		`user_id` as userId,
+		`friend_id` as
+		friendId,
+		`status` as status,
+		`req_time` as reqTime ,
+		`handle_time` as
+		handleTime from t_friend_req
+		t
+		where
+		t.req_id=#{reqId} limit 1
+	</select>
+
+	<insert id="addFriendReq" parameterType="FriendReq"
+		useGeneratedKeys="true" keyProperty="reqId" keyColumn="req_id">
+		INSERT INTO
+		t_friend_req
+		(
+
+		`user_id` ,
+		`friend_id` ,
+		`status` ,
+		`req_time` ,
+		`handle_time`
+
+		)
+		VALUES
+		(
+		#{userId},
+		#{friendId},
+
+		#{status},
+		#{reqTime},
+		#{handleTime}
+		)
+	</insert>
+	<update id="updateFriendReqStatus"
+		parameterType="java.lang.Long">
+		update `t_friend_req`
+		<set>
+			<if test="status != null and status !=''">
+				`status` = #{status},
+			</if>
+			<if test="handleTime != null and handleTime !=''">
+				`handle_time` = #{handleTime},
+			</if>
+		</set>
+		where user_id=#{userId} and friend_id=#{friendId} and status=1
+	</update>
+
+
+</mapper>

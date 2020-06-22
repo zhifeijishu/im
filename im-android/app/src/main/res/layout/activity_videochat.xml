@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.video.VideoChatActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <org.webrtc.SurfaceViewRenderer
+            android:id="@+id/video_local_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <org.webrtc.SurfaceViewRenderer
+            android:id="@+id/video_remote_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+              />
+    </LinearLayout>
+
+</LinearLayout>
+-->
+<FrameLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.video.VideoChatActivity">
+
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:id="@+id/rl_remote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <org.webrtc.SurfaceViewRenderer
+                android:id="@+id/video_remote_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/rl_local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+        <org.webrtc.SurfaceViewRenderer
+                android:id="@+id/video_local_view"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+        />
+    </RelativeLayout>
+</RelativeLayout>
+
+
+<LinearLayout
+        android:id="@+id/ll_call_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="25dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+    <!--
+        <TextView
+                android:id="@+id/tv_call_quiet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@mipmap/chat_video_change_voice_img"
+                android:gravity="center_horizontal"
+                android:text="切到语音聊天"
+                android:textColor="#ffffff"
+                android:textSize="12sp"/>
+
+        <TextView
+                android:id="@+id/tv_handup_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@mipmap/chat_video_guaduan_img_normal"
+                android:gravity="center_horizontal"
+                android:text="挂断"
+                android:textColor="#ffffff"
+                android:textSize="12sp"/>
+
+        <TextView
+                android:id="@+id/tv_change_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@mipmap/chat_video_change_camera_img"
+                android:gravity="center_horizontal"
+                android:text="转换摄像头"
+                android:textColor="#ffffff"
+                android:textSize="12sp"/>-->
+</LinearLayout>
+</FrameLayout>

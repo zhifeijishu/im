@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tksflysun.im.process.dao.MsgDao">
+
+	<select id="getMsgs" resultType="Msg">
+		select
+		`id` as id ,
+		`msg_id` as
+		msgId ,
+		`user_id` as userId,
+		`type` as
+		`type`
+		,
+		`content` as content ,
+		`add_time` as `addTime` ,
+		`srl_no` as
+		srlNo
+		from
+		t_msg
+		where
+		`user_id` =
+		#{userId} and `srl_no`  <![CDATA[ > ]]>
+		#{srlNo} order by id asc
+		limit #{pageSize}
+	</select>
+
+
+
+	<insert id="addMsg" parameterType="Msg" useGeneratedKeys="true"
+		keyProperty="id" keyColumn="id">
+		INSERT INTO
+		t_msg
+		(
+		`msg_id` ,
+		`user_id` ,
+		`type` ,
+		`content` ,
+		`add_time` ,
+		`srl_no`
+		)
+		VALUES
+		(
+		#{msgId},
+		#{userId},
+		#{type},
+		#{content},
+		#{addTime},
+		#{srlNo}
+		)
+	</insert>
+
+
+</mapper>

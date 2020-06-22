@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:clipToPadding="true"
+                android:background="#F5F5F5" android:fitsSystemWindows="true">
+
+    <!--<Button
+            android:id="@+id/detail_bar_btn_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+
+            android:layout_marginLeft="16dp"/>
+
+    <TextView
+            android:id="@+id/detail_bar_left_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/detail_bar_btn_back"
+            android:ellipsize="end"
+            android:maxEms="13"
+            android:singleLine="true"
+            android:text="聊天"
+            android:background="#F5F5F5"
+            android:textSize="16sp"
+            android:visibility="gone"/>-->
+
+    <TextView
+            android:id="@+id/chat_friend_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:maxEms="13"
+            android:textColor="#000000"
+            android:singleLine="true"
+            android:text=""
+            android:background="#F5F5F5"
+            android:textSize="16sp"/>
+
+</RelativeLayout>
