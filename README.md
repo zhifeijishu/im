@@ -12,6 +12,9 @@ android客户端写的比较水，仅仅是实现了聊天和视频功能。
 
 目前已具备单人文字和视频聊天
 
+insert  into `t_user`(`user_id`,`password`,`salt`,`mobile_phone`,`srl_no`,`read_srl_no`,`update_time_stamp`,`add_time_stamp`,`invite_code`) values (1,'48E9B0C5D497DEDF727CD6D24D39FEB4','HkBicvJzo5Gy8Vcs','您的手机号',113,111,NULL,'1585062131340','pocylmep')
+初始密码123456
+
 如有疑问可联系
 erli30_2019@163.com
 如长时间无回复，可联系zhifeijishu@163.com
